@@ -2,6 +2,7 @@ import './styles.css';
 import {useEffect, useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import api from '../../services/api';
+import {toast} from 'react-toastify';
 
 
 export default function Filme(){
@@ -45,7 +46,7 @@ function salvaFilme(){
 
     filmesSalvos.push(filme);
     localStorage.setItem('filmes',JSON.stringify(filmesSalvos));
-    alert('Filme salvo!');
+    toast.success('Filme salvo!');
 
 
 }
