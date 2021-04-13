@@ -30,6 +30,27 @@ useEffect(()=>{
 
 },[id,history]);
 
+function salvaFilme(){
+    const minhaLista = localStorage.getItem('filmes');
+
+    let filmesSalvos = JSON.parse(minhaLista) || [];
+
+
+    const hasFilme = filmesSalvos.some( (filmeSalvo)=>filmeSalvo.id === filme.id);
+
+    if(hasFilme){
+        alert('Você ja possui esse filme na sua lista');
+        return;
+    }
+
+    filmesSalvos.push(filme);
+    localStorage.setItem('filmes',JSON.stringify(filmesSalvos));
+    alert('Filme salvo!');
+
+
+}
+
+
     if(loading){
         return (
             <div className="filme-info">
@@ -44,6 +65,13 @@ useEffect(()=>{
             <img src={filme.foto} />
             <h3>Sinopse</h3>
             {filme.sinopse}
+
+            <div className="botoes">
+                <button onClick={salvaFilme}> Salvar</button>
+                <button>
+                    <a target="blank" href={`https://youtube.com/results?search_query=${filme.nome} Trailer`}>Trailer</a>
+                </button>
+            </div>
         </div>
     );
 }
