@@ -5,6 +5,7 @@ import Header from './pages/Header';
 import Home from './pages/Home';
 import Filme from './pages/Filme';
 import Favoritos from './pages/Favoritos';
+import NotFound from './pages/NotFound';
 
 const Routes = () => {
   return(
@@ -14,6 +15,7 @@ const Routes = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/filme/:id" component={Filme} />
         <Route exact path="/favoritos" component={Favoritos} />
+        <Route path="*" component={NotFound} />
         
       </Switch>
     </BrowserRouter>
